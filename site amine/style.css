@@ -255,8 +255,6 @@ cursor:url('./images/adn.png'),auto;
   transition: transform .3s ease, box-shadow .3s ease;
   animation: slideUp .8s ease;
   width: 1066px;
-  
-  /* CHANGEMENT ICI : On remplace height: 260px par min-height pour que la carte s'agrandisse */
   min-height: 260px; 
   height: auto; 
 }
@@ -474,7 +472,6 @@ body.mode-sombre .card .h { color: #fff; }
     min-width: 250px; 
 }
 
-/* Typographie du footer */
 .footer-logo {
     color: #fff;
     font-size: 24px;
@@ -583,12 +580,11 @@ body.mode-sombre #monBouton {
 } 
 
 .audio-wrapper {
-  margin-top: auto; /* Pousse le lecteur vers le bas si il y a de l'espace */
+  margin-top: auto; 
   padding-top: 10px;
   width: 100%;
 }
 
-/* Style du lecteur natif */
 audio {
   width: 100%;
   height: 35px;
@@ -596,31 +592,29 @@ audio {
   outline: none;
 }
 
-/* Petit ajustement pour le mode sombre si besoin */
 body.mode-sombre audio {
-  filter: invert(0.9) hue-rotate(180deg); /* Astuce pour rendre le lecteur natif "sombre" */
+  filter: invert(0.9) hue-rotate(180deg); 
 }
 
 .audio-wrapper {
-  margin-top: 15px;            /* Espace avec le texte */
-  background: #f1f3f4;         /* Fond gris très doux */
-  border-radius: 50px;         /* Forme de pilule très arrondie */
-  padding: 8px 15px;           /* Espace intérieur */
+  margin-top: 15px;            
+  background: #f1f3f4;       
+  border-radius: 50px;       
+  padding: 8px 15px;         
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); /* Petite ombre interne pour la profondeur */
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); 
 }
 
-/* On force le lecteur à ne pas être trop haut */
 audio {
   height: 30px; 
   width: 100%;
   outline: none;
 }
 
-/* AJOUT IMPORTANT : Adaptation pour le Dark Mode */
 body.mode-sombre .audio-wrapper {
-  background: #2a2a2a;         /* Fond sombre pour le mode dark */
+  background: #2a2a2a;         
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+
 }
