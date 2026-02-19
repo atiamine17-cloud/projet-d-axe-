@@ -172,3 +172,75 @@ list-style: none;
     list-style: none; 
     padding: 0;
 }
+
+/* ========================================= */
+/* 📱 RESPONSIVE DESIGN (Mobiles et Tablettes) */
+/* ========================================= */
+
+/* RÈGLES POUR LES ÉCRANS DE MOINS DE 768px (Tablettes et grands téléphones) */
+@media (max-width: 768px) {
+    
+    /* 1. Le Header (En-tête) */
+    .game-header {
+        flex-direction: column; /* On empile le bouton et le titre au lieu de les mettre côte à côte */
+        gap: 15px; /* Espace entre le bouton et le titre */
+        padding: 15px 20px; /* On réduit les marges intérieures */
+        text-align: center;
+    }
+
+    .game-header .title {
+        font-size: 22px; /* On réduit la taille du titre pour qu'il tienne sur l'écran */
+    }
+
+    /* 2. Le bouton "Tirer une carte" */
+    .bouton-tirage {
+        width: 90%; /* Le bouton prend presque toute la largeur sur mobile, c'est plus facile à cliquer ! */
+        max-width: 300px;
+    }
+    @media (max-width: 768px) {
+    
+    /* ... (Ton code pour le .game-header ne change pas) ... */
+
+    /* 2. Le bouton "Tirer une carte" devient fixe en bas à gauche */
+    .bouton-tirage {
+        position: fixed; /* Il "flotte" par-dessus le reste du site */
+        bottom: 20px; /* À 20px du bas de l'écran */
+        right:  20px; /* À 20px de la gauche de l'écran */
+        z-index: 2000; /* On s'assure qu'il passe au-dessus des cartes */
+        
+        margin: 0; /* On annule les marges automatiques qu'il avait sur l'ordinateur */
+        width: auto; /* Il s'adapte à la taille du texte */
+        padding: 12px 20px; /* Un peu plus compact pour le mobile */
+        font-size: 14px;
+        
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Une ombre plus forte pour bien le détacher du fond */
+    }
+}
+}
+
+/* RÈGLES POUR LES ÉCRANS DE MOINS DE 480px (Petits téléphones) */
+@media (max-width: 480px) {
+    
+    /* 3. La Grille de cartes */
+    #list-card, #grille-favoris {
+        /* On réduit la taille minimum des cartes de 220px à 140px pour en afficher au moins 2 par ligne sur mobile */
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+        gap: 12px; /* On réduit l'espace entre les cartes */
+    }
+
+    /* 4. Les images des cartes */
+    .card img {
+        height: 200px; /* On réduit la hauteur des images pour que la carte ne soit pas trop géante sur un petit écran */
+    }
+    
+    /* 5. Le texte des cartes */
+    .card h3 {
+        font-size: 16px; /* Titre plus petit */
+        margin: 10px 8px 4px;
+    }
+    
+    .card p {
+        font-size: 11px; /* Texte plus petit */
+        margin: 0 8px 10px;
+    }
+}
