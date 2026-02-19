@@ -245,7 +245,6 @@ cursor:url('./images/adn.png'),auto;
 
 
 .card {
-  /* ... tes autres styles ... */
   display: flex;
   gap: 12px;
   background: #ffffff;
@@ -254,9 +253,10 @@ cursor:url('./images/adn.png'),auto;
   overflow: hidden;
   transition: transform .3s ease, box-shadow .3s ease;
   animation: slideUp .8s ease;
-  width: 1066px;
   
-  /* CHANGEMENT ICI : On remplace height: 260px par min-height pour que la carte s'agrandisse */
+  /* REMPLACE 'width: 1066px;' PAR CECI 👇 */
+  width: 100%; 
+  
   min-height: 260px; 
   height: auto; 
 }
@@ -353,13 +353,6 @@ footer {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 900px) {
-  .card { flex-direction: column; }
-  .poster { width: 100%; height: 200px; }
-  .content { padding: 12px; }
-  .meta { width: auto; flex-direction: row; flex-wrap: wrap; }
-}
-
 .characters{
   max-width: 1100px;
   margin: 30px auto 70px;
@@ -378,13 +371,6 @@ footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-}
-
-@media (max-width: 1000px){
-  .character-grid{ grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 640px){
-  .character-grid{ grid-template-columns: 1fr; }
 }
 
 .char-card{
@@ -623,4 +609,103 @@ audio {
 body.mode-sombre .audio-wrapper {
   background: #2a2a2a;         /* Fond sombre pour le mode dark */
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* ========================================= */
+/* 📱 RESPONSIVE DESIGN (Tablettes et Mobiles) */
+/* ========================================= */
+
+/* 💻 TABLETTES ET PETITS ÉCRANS (Moins de 900px) */
+@media (max-width: 900px) {
+  /* Les grandes cartes Anime passent en colonne */
+  .card { 
+      flex-direction: column; 
+  }
+  
+  /* L'image passe en haut et prend toute la largeur */
+  .poster { 
+      width: 100%; 
+      max-width: 100%; /* Sécurité */
+      height: 250px; 
+      /* On arrondit uniquement le haut de l'image maintenant qu'elle est au-dessus ! */
+      border-radius: 14px 14px 0 0; 
+  }
+
+  .content { 
+      padding: 20px; 
+      flex-direction: column;
+      display: flex;
+  }
+  /* Les badges (Netflix, ADN) se mettent en ligne */
+  .meta { 
+      width: 100%; 
+      flex-direction: row; 
+      flex-wrap: wrap; 
+      display: flex;
+      align-items: center; /* Empêche les badges de s'étirer en hauteur ! */
+        gap: 10px; /* Crée un espace propre entre "ADN" et "NETFLIX" */
+        
+        margin-bottom: 15px;
+     }
+
+    .badge {  
+        margin-bottom: 0;
+    }
+
+      /* La grille des personnages passe à 2 colonnes au lieu de 3 */
+    .character-grid { 
+      grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+/* 📱 TÉLÉPHONES (Moins de 600px) */
+@media (max-width: 600px) {
+  
+  /* 1. Typographie plus petite pour éviter les débordements */
+  .title, .mode-sombre .title { 
+      font-size: 32px; 
+  }
+  .lede, body.mode-sombre .lede { 
+      font-size: 15px; 
+  }
+
+  /* 2. Le menu (Tabs) s'adapte pour ne pas sortir de l'écran */
+  .tab-container {
+      flex-wrap: wrap; /* Les boutons passent à la ligne s'ils manquent de place */
+      padding: 10px;
+      gap: 8px;
+  }
+  .tab-btn {
+      font-size: 13px;
+      padding: 8px 12px;
+  }
+
+  /* 3. Le Bouton Dark Mode migre en bas de l'écran (plus accessible au pouce !) */
+  #monBouton {
+      top: auto;
+      bottom: 20px;
+      right: 20px;
+      font-size: 12px;
+      padding: 10px 16px;
+  }
+
+  /* 4. La grille des personnages passe à 1 seule colonne */
+  .character-grid { 
+      grid-template-columns: 1fr; 
+  }
+
+  /* 5. Le Footer s'empile et se centre parfaitement */
+  .footer-container {
+      flex-direction: column;
+      text-align: center;
+      gap: 30px;
+  }
+  
+  /* On annule les effets de padding au survol du footer sur mobile (inutile au doigt) */
+  .footer-links a, .social-links a {
+      padding: 10px 0; 
+  }
+  .footer-links a:hover, .social-links a:hover {
+      padding-left: 0;
+  }
 }
